@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Your food result{% endblock %}
+{% block content %}
+<section class="content-page page-wrap">
+  <a class="back-link" href="{{ url_for('home') }}">← Back to home</a>
+  {% if error %}
+    <div class="alert alert-error" role="alert">{{ error }}</div>
+  {% elif prediction %}
+    <div class="result-heading">
+      <div><div class="eyebrow">YOUR FOOD SNAPSHOT</div><h1>Here's what we found.</h1></div>
+      <span class="estimate-pill">✳ Approximate estimates</span>
+    </div>
+    <div class="result-layout">
+      <div class="result-image-wrap">
+        {% if prediction.image_url %}<img class="result-image" src="{{ prediction.image_url }}" alt="Uploaded food image">{% else %}<div class="result-image-placeholder">FoodLens</div>{% endif %}
+        <div class="image-caption">Your uploaded photo</div>
+      </div>
+      <div class="result-details">
+        <div class="result-card">
+          <div class="result-label">PREDICTED FOOD</div>
+          <h2>{{ prediction.food_name }}</h2>
+          <div class="confidence-row"><span>Model confidence</span><strong>{{ "%.1f"|format(prediction.confidence * 100) }}%</strong></div>
+          <div class="confidence-track"><span style="width: {{ [prediction.confidence * 100, 100]|min }}%"></span></div>
+        </div>
+        <div class="result-card calorie-card">
+          <div class="calorie-top"><div><div class="result-label">ESTIMATED ENERGY</div><div class="calorie-number" id="calorie-number">{{ "%.0f"|format(prediction.estimated_calories) }} <small>kcal</small></div></div><span class="calorie-badge">≈</span></div>
+          <p>Approximate calories based on the food category and serving quantity you provided.</p>
+          <form class="serving-form" id="serving-form" data-url="{{ url_for('update_serving', prediction_id=prediction.id) }}">
+            <label for="result-serving">Serving quantity</label>
+            <div class="serving-controls"><input id="result-serving" name="serving_size" type="number" value="{{ prediction.serving_size }}" min="0.1" max="100" step="0.1" required><button class="button button-secondary" type="submit">Update estimate</button></div>
+            <span class="form-message" id="serving-message" role="status" aria-live="polite"></span>
+          </form>
+        </div>
+        <div class="result-card nutrition-card">
+          <div class="result-label">BASIC NUTRITION <span>per {{ prediction.nutrition.get("serving", "serving") }}</span></div>
+          <div class="nutrition-grid">
+            <div><strong>{{ prediction.nutrition.get("calories_per_serving", "—") }}</strong><span>kcal</span></div>
+            <div><strong>{{ prediction.nutrition.get("protein_g", "—") }}<small>g</small></strong><span>protein</span></div>
+            <div><strong>{{ prediction.nutrition.get("carbohydrates_g", "—") }}<small>g</small></strong><span>carbs</span></div>
+            <div><strong>{{ prediction.nutrition.get("fat_g", "—") }}<small>g</small></strong><span>fat</span></div>
+          </div>
+          <p class="nutrition-disclaimer">Nutrition values are approximate reference values, not measurements of your specific meal.</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

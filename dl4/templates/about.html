@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}About the project{% endblock %}
+{% block content %}
+<section class="content-page page-wrap about-page">
+  <div class="eyebrow">A COLLEGE DEEP LEARNING PROJECT</div>
+  <h1>Food recognition,<br><span>made approachable.</span></h1>
+  <p class="page-intro about-lead">FoodLens explores how transfer learning can turn an everyday food photo into a useful starting point for learning about nutrition.</p>
+  <div class="about-grid">
+    <article class="about-card about-wide"><span class="about-icon">◎</span><h2>Project objective</h2><p>Build a web application that preprocesses an uploaded food image, classifies it with a transfer-learned image model, and estimates calories using a reference nutrition table and a user-provided serving quantity.</p></article>
+    <article class="about-card"><span class="about-icon">✳</span><h2>Model</h2><p>MobileNetV2 initialized with ImageNet weights, followed by a custom classification head. It is trained and optionally fine-tuned on the chosen food classes.</p></article>
+    <article class="about-card"><span class="about-icon">⌘</span><h2>Technology</h2><p>Python, TensorFlow/Keras, Flask, Pillow, NumPy, scikit-learn, Matplotlib, SQLite, HTML, CSS and JavaScript.</p></article>
+    <article class="about-card"><span class="about-icon">▧</span><h2>Dataset</h2><p><a href="https://ieee-dataport.org/open-access/foodd-food-detection-dataset-calorie-measurement-using-food-images" target="_blank" rel="noopener noreferrer">FooDD on IEEE DataPort</a> is the primary dataset source. Prepare the downloaded images and genuine labels into train, validation and test splits; no dataset images or labels are fabricated here.</p></article>
+    <article class="about-card"><span class="about-icon">!</span><h2>Limitations</h2><p>Predictions depend on dataset coverage, image quality and model performance. A single image does not reveal actual portion mass, hidden ingredients or preparation method. Calories are approximate reference estimates, not medical advice or exact image-based measurements.</p></article>
+  </div>
+  <div class="dataset-note"><strong>Evaluation status</strong><p>No trained model or evaluation metrics are bundled with this starter project. Accuracy, confusion matrix, classification report and loss/accuracy curves are generated only after you train and evaluate on your own real dataset.</p></div>
+</section>
+{% endblock %}

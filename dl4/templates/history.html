@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Prediction history{% endblock %}
+{% block content %}
+<section class="content-page page-wrap">
+  <div class="eyebrow">YOUR RECENT ANALYSES</div>
+  <div class="result-heading"><div><h1>A little food for thought.</h1><p class="page-intro">Your locally saved prediction history.</p></div><a class="button button-primary" href="{{ url_for('home') }}#upload">New analysis <span aria-hidden="true">→</span></a></div>
+  {% if predictions %}
+    <div class="history-table-wrap">
+      <table class="history-table">
+        <thead><tr><th>Food</th><th>Date &amp; time</th><th>Servings</th><th>Estimated calories</th></tr></thead>
+        <tbody>
+          {% for prediction in predictions %}
+            <tr><td><span class="food-dot"></span><strong>{{ prediction.food_name }}</strong></td><td>{{ prediction.prediction_time|replace("T", " ")|replace("+00:00", " UTC") }}</td><td>{{ prediction.serving_size }}</td><td><strong>{{ "%.0f"|format(prediction.estimated_calories) }} kcal</strong></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="nutrition-disclaimer">Calorie amounts are estimates based on the selected food category and serving quantity.</p>
+  {% else %}
+    <div class="empty-state"><span class="empty-icon">⌁</span><h2>No predictions yet</h2><p>Upload a food photo to start building your history.</p><a class="button button-primary" href="{{ url_for('home') }}#upload">Analyze a photo</a></div>
+  {% endif %}
+</section>
+{% endblock %}

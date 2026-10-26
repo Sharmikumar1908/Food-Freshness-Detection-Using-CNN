@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f1">
+  <title>{% block title %}FoodLens{% endblock %} | Food Image Classification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('home') }}" aria-label="FoodLens home">
+      <span class="brand-mark" aria-hidden="true">f</span>
+      <span>food<span class="brand-light">lens</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ url_for('history') }}" class="{% if request.endpoint == 'history' %}active{% endif %}">History</a>
+      <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}">About</a>
+    </nav>
+    <a class="nav-cta" href="{{ url_for('home') }}#upload">Analyze food <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark" aria-hidden="true">f</span><span>food<span class="brand-light">lens</span></span></a>
+    <p>Built for curious minds and better food awareness.</p>
+    <span>Estimates are approximate, not medical advice.</span>
+  </footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

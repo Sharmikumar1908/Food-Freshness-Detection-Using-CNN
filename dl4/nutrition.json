@@ -1,0 +1,72 @@
+{
+  "Apple": {
+    "serving": "1 medium apple",
+    "calories_per_serving": 95,
+    "protein_g": 0.5,
+    "carbohydrates_g": 25.1,
+    "fat_g": 0.3
+  },
+  "Banana": {
+    "serving": "1 medium banana",
+    "calories_per_serving": 105,
+    "protein_g": 1.3,
+    "carbohydrates_g": 27,
+    "fat_g": 0.4
+  },
+  "Biryani": {
+    "serving": "1 cup",
+    "calories_per_serving": 300,
+    "protein_g": 10,
+    "carbohydrates_g": 45,
+    "fat_g": 9
+  },
+  "Burger": {
+    "serving": "1 burger",
+    "calories_per_serving": 354,
+    "protein_g": 17,
+    "carbohydrates_g": 33,
+    "fat_g": 17
+  },
+  "Dosa": {
+    "serving": "1 piece",
+    "calories_per_serving": 168,
+    "protein_g": 4,
+    "carbohydrates_g": 26,
+    "fat_g": 5
+  },
+  "Idli": {
+    "serving": "1 piece",
+    "calories_per_serving": 58,
+    "protein_g": 2,
+    "carbohydrates_g": 12,
+    "fat_g": 0.4
+  },
+  "Pizza": {
+    "serving": "1 slice",
+    "calories_per_serving": 285,
+    "protein_g": 12,
+    "carbohydrates_g": 36,
+    "fat_g": 10
+  },
+  "Rice": {
+    "serving": "1 cup cooked",
+    "calories_per_serving": 205,
+    "protein_g": 4.3,
+    "carbohydrates_g": 44.5,
+    "fat_g": 0.4
+  },
+  "Sandwich": {
+    "serving": "1 sandwich",
+    "calories_per_serving": 250,
+    "protein_g": 12,
+    "carbohydrates_g": 30,
+    "fat_g": 9
+  },
+  "Samosa": {
+    "serving": "1 piece",
+    "calories_per_serving": 262,
+    "protein_g": 4,
+    "carbohydrates_g": 32,
+    "fat_g": 13
+  }
+}
